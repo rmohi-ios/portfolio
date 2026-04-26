@@ -1787,6 +1787,27 @@
     addMsg(text, 'bot');
   }
 
+  // Open-ended fallback — hits /api/chat (Claude Haiku 4.5).
+  // Skill checks, jokes, and quick replies stay client-side (free + instant).
+  async function botReplyLLM(userText) {
+    const typing = addTyping();
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ message: userText }),
+      });
+      if (!res.ok) throw new Error('status ' + res.status);
+      const data = await res.json();
+      typing.remove();
+      addMsg(data.reply || "Hmm — I drew a blank on that one. Try a quick reply below 👇", 'bot');
+    } catch (err) {
+      console.error('LLM call failed:', err);
+      typing.remove();
+      addMsg("Hmm — I'm having trouble reaching the brain right now. Try a quick reply below 👇 or type a tool name (like 'AWS' or 'ArgoCD') and I'll tell you if she knows it.", 'bot');
+    }
+  }
+
   const skillContext = {
     'kubernetes': "Kubernetes is her bread and butter — CKS, CKA, and CKAD certified. She runs 12+ EKS clusters with 40+ workloads in production at State Farm.",
     'k8s': "Yep — Kubernetes. CKS/CKA/CKAD certified, daily driver.",
@@ -2028,7 +2049,7 @@
     if (lower.match(/\b(hi|hello|hey|sup|yo)\b/)) {
       return botReply("Hey 👋 What can I help with? Try asking about her strengths, hobbies, best work — or type any tool name (Kubernetes, Lambda, Splunk…) and I'll tell you if she knows it.");
     }
-    return botReply("Hmm — I didn't catch a match. Try a quick reply below 👇 or type a specific tool name (like 'AWS' or 'ArgoCD') to see if Mohi knows it.");
+    return botReplyLLM(text);
   }
 
   chatSend.addEventListener('click', () => {
