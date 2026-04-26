@@ -993,6 +993,297 @@
   }
   footer a:hover { color: var(--accent); }
 
+  /* ===== SELECTED WORK ===== */
+  .work {
+    padding: 100px 40px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+    border-top: 1px solid var(--line);
+  }
+  .work-label {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 22px;
+    font-weight: 600;
+  }
+  .work-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(48px, 7vw, 92px);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    text-align: center;
+    margin-bottom: 18px;
+    font-variation-settings: "opsz" 144;
+    background: linear-gradient(180deg, var(--ink) 35%, rgba(245, 240, 232, 0.55));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .work-title em {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+    -webkit-text-fill-color: var(--accent);
+  }
+  .work-sub {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    color: var(--ink-mute);
+    font-size: 21px;
+    text-align: center;
+    margin-bottom: 70px;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.4;
+  }
+
+  /* Story card */
+  .story {
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 0;
+    margin-bottom: 36px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .story:hover { border-color: rgba(232, 99, 58, 0.3); }
+  .story-head {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 28px 36px;
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, var(--bg-card), var(--bg-elev));
+  }
+  .story-logo {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 8px 20px -6px rgba(0,0,0,0.5);
+  }
+  .story-logo.sf { background: #C8102E; }
+  .story-logo.sg { background: #FF553E; }
+  .story-logo .lg-text {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 13px;
+    line-height: 0.95;
+    text-align: center;
+    color: white;
+    letter-spacing: -0.02em;
+    font-variation-settings: "opsz" 60;
+  }
+  .story-logo.sg .lg-text { color: #0E0D0B; }
+  .story-meta { flex: 1; min-width: 0; }
+  .story-company {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.1;
+    font-variation-settings: "opsz" 60;
+    letter-spacing: -0.01em;
+  }
+  .story-role {
+    font-size: 11px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 6px;
+    font-weight: 500;
+  }
+  .story-role .sep { color: var(--accent); margin: 0 8px; }
+  .story-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .story-tag::before { content: '★'; font-size: 11px; }
+  .story-body { padding: 36px; }
+  .story-hook {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: clamp(22px, 2.6vw, 28px);
+    line-height: 1.35;
+    color: var(--ink);
+    margin-bottom: 32px;
+    padding-left: 18px;
+    border-left: 3px solid var(--accent);
+  }
+  .story-hook strong {
+    font-style: normal;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .story-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+  .stat-cell {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    padding: 16px 18px;
+    border-radius: 8px;
+  }
+  .stat-cell .num {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1;
+    font-variation-settings: "opsz" 60;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .stat-cell .lbl {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    line-height: 1.4;
+    font-weight: 500;
+  }
+  .story-narrative {
+    color: var(--ink-soft);
+    font-size: 15.5px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease, margin-bottom 0.4s ease;
+  }
+  .story.expanded .story-narrative {
+    max-height: 2000px;
+    opacity: 1;
+    margin-bottom: 32px;
+  }
+  .story:not(.expanded) .story-narrative {
+    margin-bottom: 0;
+  }
+  .story-narrative p { margin-bottom: 18px; }
+  .story-narrative p:last-child { margin-bottom: 0; }
+  .story-narrative strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .story-narrative .t {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 5px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    transition: transform 0.2s;
+    white-space: nowrap;
+  }
+  .story-narrative .t:hover { transform: translateY(-1px); }
+  .story-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 11px 20px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.25s;
+    margin-bottom: 32px;
+  }
+  .story-toggle:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(232, 99, 58, 0.05);
+  }
+  .story-toggle .arr {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    color: var(--accent);
+    font-size: 14px;
+  }
+  .story.expanded .story-toggle .arr {
+    transform: rotate(180deg);
+  }
+  .story-toggle .label-collapsed { display: inline; }
+  .story-toggle .label-expanded { display: none; }
+  .story.expanded .story-toggle .label-collapsed { display: none; }
+  .story.expanded .story-toggle .label-expanded { display: inline; }
+  .story-stack-label {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .story-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .story-stack .pill {
+    display: inline-block;
+    padding: 6px 12px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    transition: all 0.25s;
+  }
+  .story-stack .pill:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+  }
+  @media (max-width: 700px) {
+    .work { padding: 60px 20px 50px; }
+    .story-head { padding: 22px 22px; gap: 16px; flex-wrap: wrap; }
+    .story-logo { width: 54px; height: 54px; }
+    .story-logo .lg-text { font-size: 11px; }
+    .story-company { font-size: 22px; }
+    .story-tag { order: 3; width: 100%; justify-content: center; margin-top: 4px; }
+    .story-body { padding: 26px 22px; }
+    .story-hook { font-size: 19px; padding-left: 14px; }
+    .story-narrative { font-size: 14.5px; }
+    .stat-cell .num { font-size: 20px; }
+  }
+
   /* ===== RESPONSIVE ===== */
   @media (max-width: 880px) {
     .hero {
@@ -1191,6 +1482,184 @@
       </div>
     </a>
   </div>
+</section>
+
+<!-- ===== SELECTED WORK ===== -->
+<section class="work">
+  <div class="work-label">— Selected work —</div>
+  <h2 class="work-title">Things I've <em>shipped</em></h2>
+  <p class="work-sub">Two platforms. Five years. The infrastructure that doesn't make the news because it didn't break.</p>
+
+  <!-- ============ STATE FARM ============ -->
+  <article class="story">
+    <header class="story-head">
+      <div class="story-logo sf">
+        <div class="lg-text">State<br>Farm</div>
+      </div>
+      <div class="story-meta">
+        <div class="story-company">State Farm</div>
+        <div class="story-role">DevOps Engineer <span class="sep">·</span> Sep 2023 — Now</div>
+      </div>
+      <div class="story-tag">Fortune 50</div>
+    </header>
+
+    <div class="story-body">
+      <p class="story-hook">
+        I'm responsible for the platform that decides whether software ships safely across <strong>12+ EKS clusters</strong> and <strong>40+ production workloads</strong> — at the largest property and casualty insurer in the U.S.
+      </p>
+
+      <div class="story-stats">
+        <div class="stat-cell">
+          <div class="num">−40%</div>
+          <div class="lbl">Container vulns</div>
+        </div>
+        <div class="stat-cell">
+          <div class="num">$5K → $500</div>
+          <div class="lbl">Obs cost / mo</div>
+        </div>
+        <div class="stat-cell">
+          <div class="num">2× faster</div>
+          <div class="lbl">EC2 build times</div>
+        </div>
+        <div class="stat-cell">
+          <div class="num">Zero</div>
+          <div class="lbl">P1s post-launch</div>
+        </div>
+      </div>
+
+      <button class="story-toggle" onclick="toggleStory(this)">
+        <span class="label-collapsed">Read full story</span>
+        <span class="label-expanded">Collapse</span>
+        <span class="arr">▼</span>
+      </button>
+
+      <div class="story-narrative">
+        <p>When I joined, deployments were manual, observability was fragmented across <span class="t" style="color:#FF6F00">Splunk</span> and <span class="t" style="color:#632CA6">Datadog</span>, and container security had gaps that pen testing exposed. <strong>I rebuilt all of it.</strong></p>
+
+        <p>The observability stack now runs on <span class="t" style="color:#E6522C">Prometheus</span>, <span class="t" style="color:#F46800">Grafana</span>, <span class="t" style="color:#2B7CE9">Loki</span>, and Thanos — at a fraction of what we were paying. <span class="t" style="color:#F5F0E8">SLO / SLI</span> tracking became standard. <span class="t" style="color:#E8633A">Incident Response</span> got runbooks instead of pages of Slack threads.</p>
+
+        <p>The security layer runs <span class="t" style="color:#1904DA">Trivy</span> at commit, <span class="t" style="color:#7D5BBE">Kyverno</span> / <span class="t" style="color:#7D5BBE">OPA Gatekeeper</span> at admission, and <span class="t" style="color:#00AED8">Falco</span> at runtime — with <span class="t" style="color:#5468FF">Sysbox</span> runtimes replacing Docker-in-Docker entirely. <strong>Vulnerabilities down 40%. Container escape risk gone.</strong></p>
+
+        <p>The delivery side got the same treatment. A GitOps platform on <span class="t" style="color:#EF7B4D">ArgoCD</span> / <span class="t" style="color:#5C7CFA">FluxCD</span> removed ops as a bottleneck — most deployments now happen without anyone touching them manually. A legacy <span class="t" style="color:#D33833">Jenkins</span> pipeline that shipped every few weeks became a same-day <span class="t" style="color:#326CE5">EKS</span> workflow with <strong>zero P1 incidents post-migration</strong>. EC2 build times cut in half with custom <span class="t" style="color:#02A8EF">Packer</span> AMIs.</p>
+
+        <p>The through-line: <strong>infrastructure that gets out of the way</strong> and lets engineering teams move.</p>
+
+        <p>Lately I've been folding <span class="t" style="color:#D77757">Claude</span> and <span class="t" style="color:#F5F0E8">LLMs</span> into the platform itself — using <span class="t" style="color:#D77757">MCP</span> for agentic workflows that triage incidents, draft runbooks, and accelerate review. <strong>The next era of platform engineering is AI-augmented</strong>, and I'm already there.</p>
+      </div>
+
+      <div class="story-stack-label">— Stack —</div>
+      <div class="story-stack">
+        <span class="pill" style="color:#326CE5;border-color:#326CE5">EKS</span>
+        <span class="pill" style="color:#EF7B4D;border-color:#EF7B4D">ArgoCD</span>
+        <span class="pill" style="color:#5C7CFA;border-color:#5C7CFA">FluxCD</span>
+        <span class="pill" style="color:#277A9F;border-color:#277A9F">Helm</span>
+        <span class="pill" style="color:#5468FF;border-color:#5468FF">Sysbox</span>
+        <span class="pill" style="color:#1904DA;border-color:#1904DA">Trivy</span>
+        <span class="pill" style="color:#7D5BBE;border-color:#7D5BBE">OPA</span>
+        <span class="pill" style="color:#7D5BBE;border-color:#7D5BBE">Kyverno</span>
+        <span class="pill" style="color:#00AED8;border-color:#00AED8">Falco</span>
+        <span class="pill" style="color:#E6522C;border-color:#E6522C">Prometheus</span>
+        <span class="pill" style="color:#F46800;border-color:#F46800">Grafana</span>
+        <span class="pill" style="color:#2B7CE9;border-color:#2B7CE9">Loki</span>
+        <span class="pill" style="color:#02A8EF;border-color:#02A8EF">Packer</span>
+        <span class="pill" style="color:#FF9900;border-color:#FF9900">AWS</span>
+        <span class="pill" style="color:#FF9900;border-color:#FF9900">Lambda</span>
+        <span class="pill" style="color:#FF9900;border-color:#FF9900">API Gateway</span>
+        <span class="pill" style="color:#FF9900;border-color:#FF9900">DynamoDB</span>
+        <span class="pill" style="color:#FF9900;border-color:#FF9900">SQS</span>
+        <span class="pill" style="color:#FF9900;border-color:#FF9900">S3</span>
+        <span class="pill" style="color:#3776AB;border-color:#3776AB">PostgreSQL</span>
+        <span class="pill" style="color:#F5F0E8;border-color:#F5F0E8">SLO / SLI</span>
+        <span class="pill" style="color:#E8633A;border-color:#E8633A">Incident Response</span>
+        <span class="pill" style="color:#D77757;border-color:#D77757">Claude</span>
+        <span class="pill" style="color:#D77757;border-color:#D77757">MCP</span>
+        <span class="pill" style="color:#F5F0E8;border-color:#F5F0E8">LLM</span>
+        <span class="pill" style="color:#C8C0B5;border-color:#C8C0B5">ML</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ SEATGEEK ============ -->
+  <article class="story">
+    <header class="story-head">
+      <div class="story-logo sg">
+        <div class="lg-text">Seat<br>Geek</div>
+      </div>
+      <div class="story-meta">
+        <div class="story-company">SeatGeek</div>
+        <div class="story-role">DevOps Engineer <span class="sep">·</span> Oct 2020 — Sep 2023</div>
+      </div>
+    </header>
+
+    <div class="story-body">
+      <p class="story-hook">
+        Some platforms get tested in staging. <strong>Mine got tested during sold-out stadium drops</strong> with thousands of people hitting <em>buy</em> at the same second.
+      </p>
+
+      <div class="story-stats">
+        <div class="stat-cell">
+          <div class="num">40ms → 2ms</div>
+          <div class="lbl">Service latency</div>
+        </div>
+        <div class="stat-cell">
+          <div class="num">2,000+</div>
+          <div class="lbl">Live event endpoints</div>
+        </div>
+        <div class="stat-cell">
+          <div class="num">50K</div>
+          <div class="lbl">Concurrent test sessions</div>
+        </div>
+        <div class="stat-cell">
+          <div class="num">&lt;$100</div>
+          <div class="lbl">Per load test run</div>
+        </div>
+      </div>
+
+      <button class="story-toggle" onclick="toggleStory(this)">
+        <span class="label-collapsed">Read full story</span>
+        <span class="label-expanded">Collapse</span>
+        <span class="arr">▼</span>
+      </button>
+
+      <div class="story-narrative">
+        <p>At SeatGeek, I helped keep a high-traffic live ticketing platform alive through demand spikes you can't fully plan for — where <strong>one bad deploy meant thousands of missed concerts</strong>, not just a degraded experience. The infrastructure had to be fast, resilient, and ready before the on-sale clock hit zero.</p>
+
+        <p>I cut service latency from <strong>40ms to under 2ms</strong> on the real-time ticketing stack. Built a <strong>virtual queueing system</strong> that absorbed traffic spikes and drained them at controlled rates into the platform — protecting <strong>2,000+ live event endpoints</strong> from being overwhelmed. <span class="t" style="color:#632CA6">Datadog</span> was the eyes across all of it: monitoring, alerting, and dashboards that gave us real-time visibility exactly when we needed it most — during the drops themselves.</p>
+
+        <p>When autoscaling wasn't fast enough, I replaced Cluster Autoscaler with <span class="t" style="color:#5468FF">Karpenter</span> for sub-60s Spot provisioning, and buffered checkout traffic through <span class="t" style="color:#FF9900">SQS</span> across multi-AZ deployments. <span class="t" style="color:#326CE5">Kubernetes</span> cluster management, RBAC, and upgrades ran through <span class="t" style="color:#FC6D26">GitLab CI</span> — the same pipelines that gave Go and Python teams a repeatable path to ship <span class="t" style="color:#7B42BC">Terraform</span>-provisioned infrastructure without waiting on ops.</p>
+
+        <p>The data layer ran on <span class="t" style="color:#3776AB">MySQL Global</span> with automated multi-region failover for writes, <span class="t" style="color:#DC382D">Redis ElastiCache</span> for sub-millisecond seat locks, and <span class="t" style="background:#F5F0E8;color:#231F20">MSK / Kafka</span> for order streaming. <span class="t" style="color:#FF9900">Lambda</span> handled stateless edge logic, <span class="t" style="color:#FF9900">API Gateway</span> fronted the multi-tenant API with per-tenant rate limits, and <span class="t" style="color:#FF9900">Kinesis</span> moved real-time event data downstream. <span class="t" style="color:#FF9900">Global Accelerator</span> routed users to the nearest healthy region, and <span class="t" style="color:#FF9900">S3 Transfer Acceleration</span> sped up asset uploads from anywhere in the world.</p>
+
+        <p>On security, I eliminated static secret exposure across all Kubernetes environments — migrated from long-lived credentials to <span class="t" style="color:#FFEC6E">Vault</span> dynamic secrets, ensuring <strong>nothing sensitive landed in state files</strong>.</p>
+
+        <p>And I replaced commercial load testing vendors entirely with an in-house platform — simulating <strong>50,000 concurrent browser sessions for under $100 per run</strong>. <em>We caught checkout bottlenecks before production saw them.</em></p>
+      </div>
+
+      <div class="story-stack-label">— Stack —</div>
+      <div class="story-stack">
+        <span class="pill" style="color:#326CE5;border-color:#326CE5">Kubernetes</span>
+        <span class="pill" style="color:#5468FF;border-color:#5468FF">Karpenter</span>
+        <span class="pill" style="color:#FF9900;border-color:#FF9900">AWS</span>
+        <span class="pill" style="color:#FF9900;border-color:#FF9900">Lambda</span>
+        <span class="pill" style="color:#FF9900;border-color:#FF9900">API Gateway</span>
+        <span class="pill" style="color:#FF9900;border-color:#FF9900">SQS</span>
+        <span class="pill" style="color:#FF9900;border-color:#FF9900">Kinesis</span>
+        <span class="pill" style="color:#FF9900;border-color:#FF9900">S3</span>
+        <span class="pill" style="color:#FF9900;border-color:#FF9900">S3 Transfer Accel</span>
+        <span class="pill" style="color:#FF9900;border-color:#FF9900">Global Accelerator</span>
+        <span class="pill" style="color:#3776AB;border-color:#3776AB">MySQL Global</span>
+        <span class="pill" style="color:#3776AB;border-color:#3776AB">RDS</span>
+        <span class="pill" style="color:#DC382D;border-color:#DC382D">Redis</span>
+        <span class="pill" style="color:#DC382D;border-color:#DC382D">ElastiCache</span>
+        <span class="pill" style="color:#231F20;border-color:#F5F0E8;background:#F5F0E8">Kafka / MSK</span>
+        <span class="pill" style="color:#7B42BC;border-color:#7B42BC">Terraform</span>
+        <span class="pill" style="color:#FC6D26;border-color:#FC6D26">GitLab CI</span>
+        <span class="pill" style="color:#FFEC6E;border-color:#FFEC6E">Vault</span>
+        <span class="pill" style="color:#632CA6;border-color:#632CA6">Datadog</span>
+        <span class="pill" style="color:#E8633A;border-color:#E8633A">Incident Response</span>
+      </div>
+    </div>
+  </article>
 </section>
 
 <!-- ===== FLUENT IN ===== -->
@@ -1732,6 +2201,20 @@
   });
 
   bindQuickReplies();
+
+  /* ===========================================================
+     SELECTED WORK — independent toggle per story card
+     Both cards can be open at the same time for comparison.
+  ============================================================ */
+  function toggleStory(btn) {
+    const story = btn.closest('.story');
+    story.classList.toggle('expanded');
+    if (story.classList.contains('expanded')) {
+      setTimeout(() => {
+        btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 200);
+    }
+  }
 </script>
 
 </body>
