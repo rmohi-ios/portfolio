@@ -1677,61 +1677,41 @@
   const subtitleBar = document.getElementById('subtitleBar');
   const subtitleText = document.getElementById('subtitleText');
 
+  // Recorded voice — single static M4A served from the same origin (Vercel CDN).
+  const audio = new Audio('audio/mohi-intro.m4a');
+  audio.preload = 'auto';
   let isSpeaking = false;
 
-  if (window.speechSynthesis) {
-    window.speechSynthesis.getVoices();
-    window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+  function showSpeakingUI() {
+    isSpeaking = true;
+    botSvg.classList.add('speaking');
+    voiceBtn.classList.add('playing');
+    voiceBtnLabel.textContent = 'Stop';
+    subtitleText.textContent = speechText;
+    subtitleBar.classList.add('visible');
   }
-
-  function pickVoice() {
-    const voices = window.speechSynthesis.getVoices();
-    const preferred = ['Samantha', 'Karen', 'Google US English', 'Microsoft Aria', 'Microsoft Jenny', 'Victoria', 'Allison'];
-    for (const name of preferred) {
-      const v = voices.find(v => v.name.includes(name));
-      if (v) return v;
-    }
-    return voices.find(v => v.lang.startsWith('en')) || voices[0];
-  }
-
-  function startSpeaking() {
-    if (!window.speechSynthesis) {
-      alert("Sorry — your browser doesn't support speech. The full version uses a recorded voice.");
-      return;
-    }
-    const u = new SpeechSynthesisUtterance(speechText);
-    u.rate = 1.02;
-    u.pitch = 1.12;
-    const voice = pickVoice();
-    if (voice) u.voice = voice;
-
-    u.onstart = () => {
-      isSpeaking = true;
-      botSvg.classList.add('speaking');
-      voiceBtn.classList.add('playing');
-      voiceBtnLabel.textContent = 'Stop';
-      subtitleText.textContent = speechText;
-      subtitleBar.classList.add('visible');
-    };
-    u.onend = u.onerror = () => {
-      isSpeaking = false;
-      botSvg.classList.remove('speaking');
-      voiceBtn.classList.remove('playing');
-      voiceBtnLabel.textContent = 'Press Play to Meet Mohi';
-      subtitleBar.classList.remove('visible');
-    };
-
-    window.speechSynthesis.cancel();
-    window.speechSynthesis.speak(u);
-  }
-
-  function stopSpeaking() {
-    window.speechSynthesis.cancel();
+  function hideSpeakingUI() {
     isSpeaking = false;
     botSvg.classList.remove('speaking');
     voiceBtn.classList.remove('playing');
     voiceBtnLabel.textContent = 'Press Play to Meet Mohi';
     subtitleBar.classList.remove('visible');
+  }
+
+  audio.addEventListener('play', showSpeakingUI);
+  audio.addEventListener('ended', hideSpeakingUI);
+  audio.addEventListener('pause', () => { if (!audio.ended) hideSpeakingUI(); });
+
+  function startSpeaking() {
+    audio.currentTime = 0;
+    audio.play().catch(err => {
+      console.error('Audio play failed:', err);
+      alert("Couldn't play the intro audio — please try again.");
+    });
+  }
+  function stopSpeaking() {
+    audio.pause();
+    audio.currentTime = 0;
   }
 
   voiceBtn.addEventListener('click', () => {
