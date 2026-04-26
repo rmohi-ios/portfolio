@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohi Rakhmatullaeva — Platform / DevOps Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0E0D0B;
+    --bg-elev: #15130F;
+    --bg-card: #1C1A16;
+    --ink: #F5F0E8;
+    --ink-mute: #9A938A;
+    --ink-soft: #C8C0B5;
+    --line: #2E2A25;
+    --line-soft: #1F1C18;
+    --accent: #E8633A;
+    --accent-glow: rgba(232, 99, 58, 0.5);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'JetBrains Mono', monospace;
+    overflow-x: hidden;
+    min-height: 100vh;
+    font-size: 15px;
+    scroll-behavior: smooth;
+  }
+  body {
+    background:
+      radial-gradient(ellipse 800px 600px at 20% 0%, rgba(232, 99, 58, 0.08), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 90% 20%, rgba(232, 99, 58, 0.07), transparent 60%),
+      var(--bg);
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none;
+    opacity: 0.05; z-index: 100;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    z-index: 10;
+  }
+  nav .left, nav .right { display: flex; gap: 22px; align-items: center; }
+  .status-dot {
+    display: inline-block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-right: 8px;
+    animation: pulse 2s infinite;
+    vertical-align: middle;
+    box-shadow: 0 0 10px var(--accent);
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+  nav .mute { color: var(--ink-mute); }
+  nav .accent-link {
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid var(--accent);
+    padding: 6px 14px;
+    border-radius: 100px;
+    transition: all 0.2s;
+  }
+  nav .accent-link:hover { background: var(--accent); color: var(--bg); }
+
+  /* ===== HERO (SPLIT — IDENTITY LEFT, BOT RIGHT) ===== */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 0.85fr;
+    gap: 40px;
+    padding: 50px 40px 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  /* LEFT — IDENTITY */
+  .id-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding: 7px 14px;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    margin-bottom: 22px;
+    font-weight: 600;
+  }
+  .id-pill .ping {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  .name-block { margin-bottom: 22px; }
+  h1.name {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(70px, 11vw, 156px);
+    line-height: 0.85;
+    letter-spacing: -0.045em;
+    font-variation-settings: "opsz" 144;
+    background: linear-gradient(180deg, var(--ink) 35%, rgba(245, 240, 232, 0.55));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+  }
+  .name-last {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+    font-size: clamp(30px, 4.5vw, 54px);
+    line-height: 1;
+    margin-top: 6px;
+    display: block;
+  }
+
+  .role-line {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+  .role-line .sep { color: var(--accent); margin: 0 8px; font-weight: 400; }
+  .role-line .mute { color: var(--ink-mute); font-weight: 400; }
+
+  .stat-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 26px;
+  }
+  .stat {
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    padding: 9px 13px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 80px;
+  }
+  .stat .num {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--accent);
+    line-height: 1;
+    font-variation-settings: "opsz" 60;
+  }
+  .stat .lbl {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  .tagline {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: clamp(18px, 2vw, 23px);
+    line-height: 1.4;
+    color: var(--ink-soft);
+    margin-bottom: 26px;
+    border-left: 2px solid var(--accent);
+    padding-left: 16px;
+    max-width: 520px;
+  }
+  .tagline strong {
+    font-style: normal;
+    font-family: 'Fraunces', serif;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .cta-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  .cta-primary {
+    background: var(--accent);
+    color: var(--bg);
+    border: 1px solid var(--accent);
+  }
+  .cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -10px var(--accent);
+  }
+  .cta-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--line);
+  }
+  .cta-ghost:hover { border-color: var(--ink); }
+
+  /* RIGHT — BIG BOT VISUAL */
+  .bot-visual {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+  }
+  .bot-glow-bg {
+    position: absolute;
+    top: 30%; left: 50%;
+    width: 380px; height: 380px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent-glow), transparent 70%);
+    filter: blur(50px);
+    opacity: 0.4;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none;
+    animation: glowPulse 4s ease-in-out infinite;
+  }
+  @keyframes glowPulse {
+    0%, 100% { opacity: 0.35; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.55; transform: translate(-50%, -50%) scale(1.08); }
+  }
+
+  .bot-svg {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    position: relative;
+    z-index: 1;
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  .bot-svg .eye {
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: blink 5s infinite;
+  }
+  .bot-svg .eye.right { animation-delay: 0.05s; }
+  @keyframes blink {
+    0%, 92%, 96%, 100% { transform: scaleY(1); }
+    94% { transform: scaleY(0.1); }
+  }
+  .bot-svg .antenna-dot {
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: antennaPulse 2s infinite;
+  }
+  @keyframes antennaPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+  /* MOUTH */
+  .bot-svg .mouth {
+    transform-origin: center;
+    transform-box: fill-box;
+    transition: transform 0.15s;
+  }
+  .bot-svg.speaking .mouth { animation: talk 0.16s infinite alternate; }
+  @keyframes talk {
+    from { transform: scaleY(0.4); }
+    to   { transform: scaleY(2.6); }
+  }
+  /* When speaking, eyes get a bit happier */
+  .bot-svg.speaking .eye-glow {
+    animation: glowMore 0.5s infinite alternate;
+  }
+  @keyframes glowMore {
+    from { opacity: 0.25; }
+    to { opacity: 0.55; }
+  }
+
+  /* Voice play button */
+  .voice-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    padding: 13px 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    z-index: 1;
+  }
+  .voice-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .voice-btn .play-tri {
+    width: 0; height: 0;
+    border-left: 9px solid var(--accent);
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    margin-left: 2px;
+    transition: all 0.2s;
+  }
+  .voice-btn.playing .play-tri {
+    border-left: none;
+    width: 9px; height: 10px;
+    border: none;
+    background: var(--accent);
+    box-shadow: inset 4px 0 0 var(--bg-elev), inset -4px 0 0 var(--bg-elev);
+    margin-left: 0;
+  }
+  .voice-btn.playing { border-color: var(--accent); }
+
+  /* Subtitle bar (live captions) */
+  .subtitle-bar {
+    width: 100%;
+    max-width: 460px;
+    padding: 14px 20px;
+    background: rgba(0,0,0,0.5);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    text-align: center;
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--ink);
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+    z-index: 1;
+    position: relative;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .subtitle-bar.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .subtitle-bar .cap {
+    font-family: 'JetBrains Mono', monospace;
+    font-style: normal;
+    font-size: 9px;
+    letter-spacing: 0.32em;
+    color: var(--accent);
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  /* ===== CHAT COMMAND CENTER (full-width below hero) ===== */
+  .chat-command {
+    max-width: 920px;
+    margin: 0 auto 60px;
+    padding: 0 32px;
+  }
+  .chat-command-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .chat-command-label {
+    font-size: 10px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .chat-command-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(28px, 4vw, 42px);
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin-bottom: 8px;
+    font-variation-settings: "opsz" 144;
+  }
+  .chat-command-title em {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+  .chat-command-sub {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink-mute);
+  }
+  .chat-command-sub .powered {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 3px 10px;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    font-family: 'JetBrains Mono', monospace;
+    font-style: normal;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .chat-command-sub .powered .accent { color: var(--accent); }
+
+  .chat-panel {
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .chat-header {
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-card);
+  }
+  .chat-header-left { display: flex; gap: 10px; align-items: center; }
+  .chat-dots { display: flex; gap: 6px; }
+  .chat-dots span {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--line);
+  }
+  .chat-dots span:first-child { background: #FF5F57; }
+  .chat-dots span:nth-child(2) { background: #FEBC2E; }
+  .chat-dots span:nth-child(3) { background: #28C840; }
+  .chat-title {
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-left: 10px;
+    font-weight: 500;
+  }
+  .chat-status {
+    font-size: 9px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: #5BD37F;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-weight: 600;
+  }
+  .chat-status::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #5BD37F;
+    box-shadow: 0 0 8px #5BD37F;
+  }
+
+  .chat-body {
+    padding: 22px 22px;
+    height: 240px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .chat-body::-webkit-scrollbar { width: 4px; }
+  .chat-body::-webkit-scrollbar-thumb { background: var(--line); border-radius: 2px; }
+  .msg {
+    max-width: 85%;
+    padding: 13px 17px;
+    font-size: 14px;
+    line-height: 1.55;
+    border-radius: 12px;
+    animation: msgIn 0.4s ease-out;
+  }
+  @keyframes msgIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .msg.bot {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-top-left-radius: 4px;
+    align-self: flex-start;
+    color: var(--ink);
+  }
+  .msg.bot .label {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .msg.bot strong { color: var(--accent); font-weight: 500; }
+  .msg.user {
+    background: var(--accent);
+    color: var(--bg);
+    border-top-right-radius: 4px;
+    align-self: flex-end;
+    font-weight: 500;
+  }
+  .typing { display: inline-flex; gap: 4px; padding: 4px 0; }
+  .typing span {
+    width: 6px; height: 6px;
+    background: var(--ink-mute);
+    border-radius: 50%;
+    animation: typing 1.2s infinite;
+  }
+  .typing span:nth-child(2) { animation-delay: 0.2s; }
+  .typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes typing {
+    0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+    30% { opacity: 1; transform: translateY(-3px); }
+  }
+
+  .quick-replies {
+    padding: 14px 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    background: var(--bg-card);
+  }
+  .quick-reply {
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    padding: 9px 15px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  .quick-reply:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(232, 99, 58, 0.06);
+  }
+
+  .chat-input {
+    padding: 12px 14px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background: var(--bg-elev);
+  }
+  .chat-input input {
+    flex: 1;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .chat-input input:focus { border-color: var(--accent); }
+  .chat-input input::placeholder { color: var(--ink-mute); }
+  .chat-input button {
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    padding: 12px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .chat-input button:hover { transform: translateY(-1px); }
+
+  /* ===== ABOUT ===== */
+  .about {
+    padding: 80px 40px 90px;
+    border-top: 1px solid var(--line);
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .about-label {
+    font-size: 10px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+    font-weight: 600;
+  }
+  .about-text {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(24px, 3vw, 36px);
+    line-height: 1.4;
+    color: var(--ink);
+    font-weight: 400;
+    font-variation-settings: "opsz" 144;
+    letter-spacing: -0.01em;
+    margin-bottom: 50px;
+  }
+  .about-text strong {
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .about-text em {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+
+  /* ===== COMPANY BADGES ===== */
+  .companies-label {
+    font-size: 10px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 28px;
+    font-weight: 600;
+  }
+  .companies-label::before, .companies-label::after {
+    content: '—';
+    margin: 0 12px;
+    color: var(--line);
+  }
+  .companies {
+    display: flex;
+    gap: 56px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .company-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+  }
+  .company-badge:hover { transform: translateY(-6px); }
+
+  .logo-wrap {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 2px solid transparent;
+    box-shadow: 0 12px 30px -10px rgba(0,0,0,0.5);
+    transition: all 0.3s;
+  }
+  .company-badge:hover .logo-wrap {
+    box-shadow: 0 16px 40px -8px var(--accent-glow);
+  }
+  .company-badge.sf .logo-wrap { background: #C8102E; }
+  .company-badge.sg .logo-wrap { background: #FF553E; }
+
+  .sf-text {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 22px;
+    color: white;
+    letter-spacing: -0.025em;
+    font-variation-settings: "opsz" 60;
+    text-align: center;
+    line-height: 1;
+  }
+  .sf-text .farm { color: rgba(255,255,255,0.92); }
+
+  .sg-text {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 21px;
+    line-height: 0.9;
+    text-align: center;
+    color: #0E0D0B;
+    letter-spacing: -0.02em;
+    font-style: italic;
+    font-variation-settings: "opsz" 60;
+  }
+
+  .company-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  .company-name {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    color: var(--ink);
+    font-weight: 500;
+    font-variation-settings: "opsz" 60;
+  }
+  .company-role {
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 500;
+  }
+  .company-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 4px;
+    padding: 4px 10px;
+    background: var(--accent);
+    color: var(--bg);
+    font-size: 8px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: 100px;
+  }
+  .company-tag::before {
+    content: '★';
+    font-size: 10px;
+    line-height: 1;
+  }
+
+  /* ===== TOOLS ===== */
+  .tools-section {
+    padding: 50px 0 30px;
+    border-top: 1px solid var(--line);
+    overflow: hidden;
+    position: relative;
+  }
+  .tools-section.secondary {
+    padding: 30px 0 50px;
+    border-top: none;
+    border-bottom: 1px solid var(--line);
+  }
+  .tools-section::before, .tools-section::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 100px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .tools-section::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
+  .tools-section::after { right: 0; background: linear-gradient(-90deg, var(--bg), transparent); }
+  .tools-label {
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
+  .tools-label .accent { color: var(--accent); font-weight: 600; }
+  .tools-label::before, .tools-label::after { content: '—'; margin: 0 12px; color: var(--line); }
+  .marquee { display: flex; animation: scroll 60s linear infinite; width: max-content; }
+  .marquee.fast { animation-duration: 40s; animation-direction: reverse; }
+  .marquee-track {
+    display: flex;
+    gap: 44px;
+    align-items: center;
+    padding-right: 44px;
+  }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .tool {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 32px;
+    white-space: nowrap;
+    transition: opacity 0.3s, transform 0.3s;
+    letter-spacing: -0.015em;
+    font-variation-settings: "opsz" 60;
+    opacity: 0.92;
+  }
+  .tool:hover { opacity: 1; transform: scale(1.05); }
+  .tools-section.secondary .tool { font-size: 22px; opacity: 0.7; }
+  .tool-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--ink-mute);
+    flex-shrink: 0;
+    opacity: 0.4;
+  }
+
+  /* ===== CONTACT ===== */
+  .contact {
+    padding: 90px 40px;
+    text-align: center;
+    border-top: 1px solid var(--line);
+  }
+  .contact-label {
+    font-size: 10px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 22px;
+    font-weight: 600;
+  }
+  .contact-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(40px, 5.5vw, 72px);
+    line-height: 1;
+    letter-spacing: -0.035em;
+    margin-bottom: 22px;
+    font-variation-settings: "opsz" 144;
+  }
+  .contact-title em {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+  .contact-desc {
+    max-width: 560px;
+    margin: 0 auto 40px;
+    color: var(--ink-soft);
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.5;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .contact-card.linkedin-only {
+    padding: 32px 30px;
+    background: linear-gradient(135deg, var(--bg-elev), var(--bg-card));
+    border: 1px solid var(--line);
+    text-align: center;
+    border-radius: 14px;
+  }
+  .contact-card.linkedin-only:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px -20px var(--accent);
+  }
+  .contact-card.linkedin-only .label {
+    font-size: 10px;
+    margin-bottom: 14px;
+  }
+  .contact-card.linkedin-only .value {
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+  .contact-card.linkedin-only .arrow {
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .contact-card {
+    padding: 22px 20px;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    text-align: left;
+    transition: all 0.3s;
+    text-decoration: none;
+    color: var(--ink);
+    border-radius: 10px;
+    display: block;
+  }
+  .contact-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+  }
+  .contact-card .label {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .contact-card .value {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 500;
+    font-variation-settings: "opsz" 60;
+  }
+  .contact-card .arrow {
+    color: var(--accent);
+    margin-top: 14px;
+    font-size: 14px;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    padding: 28px 32px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    flex-wrap: wrap;
+    gap: 14px;
+    font-weight: 500;
+  }
+  footer a {
+    color: var(--ink);
+    text-decoration: none;
+    margin-left: 22px;
+    transition: color 0.2s;
+  }
+  footer a:hover { color: var(--accent); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 880px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 30px;
+      padding: 30px 24px 50px;
+    }
+    .bot-visual { padding: 0; }
+    .bot-svg { max-width: 280px; }
+  }
+  @media (max-width: 640px) {
+    body { font-size: 14px; }
+    nav { padding: 12px 16px; flex-direction: column; gap: 10px; }
+    nav .left, nav .right { gap: 14px; font-size: 9px; }
+    .stat .num { font-size: 18px; }
+    .bot-svg { max-width: 240px; }
+    .chat-command { padding: 0 20px; }
+    .chat-body { height: 220px; padding: 18px; }
+    .about { padding: 50px 24px; }
+    .tool { font-size: 24px; }
+    .marquee-track { gap: 32px; padding-right: 32px; }
+    .contact { padding: 60px 24px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; padding: 22px 18px; }
+    footer a { margin: 0 10px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="left">
+    <span><span class="status-dot"></span>LIVE</span>
+    <span class="mute">v9 · BUILT BY MOHI</span>
+  </div>
+  <div class="right">
+    <span class="mute">NYC · NO VISA NEEDED</span>
+    <a href="#contact" class="accent-link">Hire</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <!-- LEFT: IDENTITY -->
+  <div class="identity">
+    <div class="id-pill">
+      <span class="ping"></span>
+      Open to opportunities
+    </div>
+
+    <div class="name-block">
+      <h1 class="name">Mohi</h1>
+      <span class="name-last">Rakhmatullaeva.</span>
+    </div>
+
+    <div class="role-line">
+      Platform <span class="sep">/</span> DevOps Engineer
+      <span class="sep">·</span><span class="mute">5+ Years</span>
+      <span class="sep">·</span><span class="mute">SRE</span>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat"><span class="num">12+</span><span class="lbl">K8s Clusters</span></div>
+      <div class="stat"><span class="num">40+</span><span class="lbl">Workloads</span></div>
+      <div class="stat"><span class="num">5</span><span class="lbl">Certs</span></div>
+      <div class="stat"><span class="num">$5K → $500</span><span class="lbl">obs cost cut</span></div>
+    </div>
+
+    <p class="tagline">
+      <strong>"Building infrastructure that survives production</strong> — not just staging."
+    </p>
+
+    <div class="cta-row">
+      <a href="#contact" class="cta cta-primary">Get in touch <span>→</span></a>
+      <a href="#stack" class="cta cta-ghost">Tech Stack <span>↓</span></a>
+    </div>
+  </div>
+
+  <!-- RIGHT: BIG BOT + VOICE -->
+  <div class="bot-visual">
+    <div class="bot-glow-bg"></div>
+    <svg class="bot-svg" id="botSvg" viewBox="0 0 280 320" xmlns="http://www.w3.org/2000/svg">
+      <line x1="140" y1="40" x2="140" y2="20" stroke="#EDE5D6" stroke-width="2.5" stroke-linecap="round"/>
+      <circle class="antenna-dot" cx="140" cy="14" r="5" fill="#E8633A"/>
+      <ellipse cx="140" cy="278" rx="80" ry="10" fill="#000" opacity="0.4" filter="blur(8px)"/>
+      <ellipse cx="55" cy="195" rx="20" ry="32" fill="#EDE5D6" transform="rotate(-15 55 195)"/>
+      <ellipse cx="225" cy="195" rx="20" ry="32" fill="#EDE5D6" transform="rotate(15 225 195)"/>
+      <ellipse cx="58" cy="210" rx="12" ry="18" fill="#C9BFA8" opacity="0.5" transform="rotate(-15 58 210)"/>
+      <ellipse cx="222" cy="210" rx="12" ry="18" fill="#C9BFA8" opacity="0.5" transform="rotate(15 222 210)"/>
+      <ellipse cx="140" cy="220" rx="62" ry="58" fill="#EDE5D6"/>
+      <ellipse cx="140" cy="240" rx="50" ry="22" fill="#C9BFA8" opacity="0.3"/>
+      <rect x="65" y="48" width="150" height="118" rx="38" fill="#EDE5D6"/>
+      <ellipse cx="100" cy="80" rx="22" ry="14" fill="#FFFFFF" opacity="0.5"/>
+      <rect x="82" y="68" width="116" height="78" rx="24" fill="#0E0D0B"/>
+      <rect x="82" y="68" width="116" height="78" rx="24" fill="url(#screenGrad)"/>
+      <ellipse class="eye left" cx="118" cy="100" rx="8" ry="11" fill="#E8633A">
+        <animate attributeName="fill" values="#E8633A;#FF8A5C;#E8633A" dur="3s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse class="eye right" cx="162" cy="100" rx="8" ry="11" fill="#E8633A">
+        <animate attributeName="fill" values="#E8633A;#FF8A5C;#E8633A" dur="3s" repeatCount="indefinite"/>
+      </ellipse>
+      <circle class="eye-glow" cx="118" cy="100" r="14" fill="#E8633A" opacity="0.3" filter="blur(4px)"/>
+      <circle class="eye-glow" cx="162" cy="100" r="14" fill="#E8633A" opacity="0.3" filter="blur(4px)"/>
+
+      <!-- MOUTH -->
+      <rect class="mouth" x="124" y="128" width="32" height="6" rx="3" fill="#E8633A"/>
+
+      <ellipse cx="105" cy="80" rx="14" ry="6" fill="#FFFFFF" opacity="0.15"/>
+      <defs>
+        <linearGradient id="screenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:#1A1814;stop-opacity:1"/>
+          <stop offset="100%" style="stop-color:#0E0D0B;stop-opacity:1"/>
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <button class="voice-btn" id="voiceBtn">
+      <span class="play-tri"></span>
+      <span id="voiceBtnLabel">Press Play to Meet Mohi</span>
+    </button>
+
+    <div class="subtitle-bar" id="subtitleBar">
+      <span class="cap">◉ LIVE</span>
+      <span id="subtitleText"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CHAT COMMAND CENTER ===== -->
+<section class="chat-command">
+  <div class="chat-command-header">
+    <div class="chat-command-label">Mohi-AI · Command Center</div>
+    <h2 class="chat-command-title">Or just <em>chat with me</em></h2>
+    <p class="chat-command-sub">Ask anything about Mohi's work, skills, or this site.
+      <span class="powered">Powered by <span class="accent">Claude API</span></span>
+    </p>
+  </div>
+
+  <div class="chat-panel">
+    <div class="chat-header">
+      <div class="chat-header-left">
+        <div class="chat-dots"><span></span><span></span><span></span></div>
+        <span class="chat-title">mohi-ai · terminal</span>
+      </div>
+      <span class="chat-status">Connected</span>
+    </div>
+
+    <div class="chat-body" id="chatBody">
+      <div class="msg bot">
+        <span class="label">Mohi-AI</span>
+        Hey 👋 I'm Mohi-AI. Ask me anything about Mohi — or <strong>type any tool name</strong> (Kubernetes, Lambda, Terraform…) and I'll tell you if she knows it.
+      </div>
+    </div>
+
+    <div class="quick-replies" id="quickReplies">
+      <button class="quick-reply" data-q="about">Tell me about Mohi</button>
+      <button class="quick-reply" data-q="strengths">Her strengths?</button>
+      <button class="quick-reply" data-q="hobbies">Her hobbies?</button>
+      <button class="quick-reply" data-q="best">Best work?</button>
+      <button class="quick-reply" data-q="joke">Tell me a joke 😄</button>
+    </div>
+
+    <div class="chat-input">
+      <input type="text" id="chatInput" placeholder="Type a tool name (e.g. 'Lambda') or ask anything…" />
+      <button id="chatSend">Send</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="about">
+  <div class="about-label">About</div>
+  <p class="about-text">
+    A <em>Platform / DevOps engineer</em> based in New York — currently shipping infrastructure at <strong>Fortune 50 State Farm</strong>, previously kept <strong>SeatGeek</strong>'s ticketing platform alive through stadium-scale on-sales. Five years deep, certified across <em>Kubernetes, AWS, and security</em>. Curious, strategic, always shipping.
+  </p>
+
+  <div class="companies-label">Where she's built</div>
+  <div class="companies">
+    <a href="https://www.statefarm.com" target="_blank" rel="noopener" class="company-badge sf">
+      <div class="logo-wrap">
+        <div class="sf-text">State<br><span class="farm">Farm</span></div>
+      </div>
+      <div class="company-meta">
+        <span class="company-name">State Farm</span>
+        <span class="company-role">Sep 2023 — Now</span>
+        <span class="company-tag">Fortune 50</span>
+      </div>
+    </a>
+
+    <a href="https://seatgeek.com" target="_blank" rel="noopener" class="company-badge sg">
+      <div class="logo-wrap">
+        <div class="sg-text">Seat<br>Geek</div>
+      </div>
+      <div class="company-meta">
+        <span class="company-name">SeatGeek</span>
+        <span class="company-role">Oct 2020 — Sep 2023</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ===== FLUENT IN ===== -->
+<section class="tools-section" id="stack">
+  <div class="tools-label">— <span class="accent">Fluent in</span> · what Mohi ships every day —</div>
+  <div class="marquee">
+    <div class="marquee-track">
+      <span class="tool" style="color:#326CE5">Kubernetes</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#FF9900">AWS</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#FF9900">Lambda</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#FF9900">API Gateway</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#7B42BC">Terraform</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#2496ED">Docker</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#EF7B4D">ArgoCD</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#466BB0">Istio</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#277A9F">Helm</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#5468FF">Karpenter</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#00B4F0">KEDA</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#FBA919">Velero</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#E6522C">Prometheus</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#F46800">Grafana</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#2B7CE9">Loki</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#FF6F00">Splunk</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#632CA6">Datadog</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#F5F0E8">SLO / SLI</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#FFEC6E">Vault</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#00AED8">Falco</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#7D5BBE">OPA</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#1904DA">Trivy</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#F8C517">Cilium</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#FC6D26">GitLab CI</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#FCC624">Linux</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#3776AB">Python</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#00ADD8">Go</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#4EAA25">Bash</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#231F20;background:#F5F0E8;padding:0 12px;border-radius:6px">Kafka</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#DC382D">Redis</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#29B5E8">Snowflake</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#D77757">Claude</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#F5F0E8">LLM</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#C8C0B5">ML</span><span class="tool-dot"></span>
+    </div>
+    <div class="marquee-track" aria-hidden="true">
+      <span class="tool" style="color:#326CE5">Kubernetes</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#FF9900">AWS</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#FF9900">Lambda</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#FF9900">API Gateway</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#7B42BC">Terraform</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#2496ED">Docker</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#EF7B4D">ArgoCD</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#466BB0">Istio</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#277A9F">Helm</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#5468FF">Karpenter</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#00B4F0">KEDA</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#FBA919">Velero</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#E6522C">Prometheus</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#F46800">Grafana</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#2B7CE9">Loki</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#FF6F00">Splunk</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#632CA6">Datadog</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#F5F0E8">SLO / SLI</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#FFEC6E">Vault</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#00AED8">Falco</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#7D5BBE">OPA</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#1904DA">Trivy</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#F8C517">Cilium</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#FC6D26">GitLab CI</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#FCC624">Linux</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#3776AB">Python</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#00ADD8">Go</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#4EAA25">Bash</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#231F20;background:#F5F0E8;padding:0 12px;border-radius:6px">Kafka</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#DC382D">Redis</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#29B5E8">Snowflake</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#D77757">Claude</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#F5F0E8">LLM</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#C8C0B5">ML</span><span class="tool-dot"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BUILT WITH ===== -->
+<section class="tools-section secondary">
+  <div class="tools-label">— this site built with —</div>
+  <div class="marquee fast">
+    <div class="marquee-track">
+      <span class="tool" style="color:#F5F0E8">Next.js</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#61DAFB">React</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#3178C6">TypeScript</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#F5F0E8">Vercel</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#06B6D4">Tailwind</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#D77757">Claude API</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#74AA9C">Whisper</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#2088FF">GitHub Actions</span><span class="tool-dot"></span>
+    </div>
+    <div class="marquee-track" aria-hidden="true">
+      <span class="tool" style="color:#F5F0E8">Next.js</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#61DAFB">React</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#3178C6">TypeScript</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#F5F0E8">Vercel</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#06B6D4">Tailwind</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#D77757">Claude API</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#74AA9C">Whisper</span><span class="tool-dot"></span>
+      <span class="tool" style="color:#2088FF">GitHub Actions</span><span class="tool-dot"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact" id="contact">
+  <div class="contact-label">Let's talk</div>
+  <h2 class="contact-title">Send a <em>message</em></h2>
+  <p class="contact-desc">Hiring, collaborating, or curious how this was built — I'd love to hear from you.</p>
+
+  <div class="contact-grid">
+    <a href="http://linkedin.com/in/r-mokhi" target="_blank" rel="noopener" class="contact-card linkedin-only">
+      <div class="label">LinkedIn — Best way to reach me</div>
+      <div class="value">linkedin.com/in/r-mokhi</div>
+      <div class="arrow">Connect →</div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 — Mohi Rakhmatullaeva · NYC</div>
+  <div>
+    <a href="http://linkedin.com/in/r-mokhi" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/rmohi-ios" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (!href || href === '#') {
+        e.preventDefault();
+        return;
+      }
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  const speechText = "Hey, I'm Mohi. Welcome to my site — I built this whole thing from scratch. Scroll down or just chat with me to learn more.";
+
+  const botSvg = document.getElementById('botSvg');
+  const voiceBtn = document.getElementById('voiceBtn');
+  const voiceBtnLabel = document.getElementById('voiceBtnLabel');
+  const subtitleBar = document.getElementById('subtitleBar');
+  const subtitleText = document.getElementById('subtitleText');
+
+  let isSpeaking = false;
+
+  if (window.speechSynthesis) {
+    window.speechSynthesis.getVoices();
+    window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+  }
+
+  function pickVoice() {
+    const voices = window.speechSynthesis.getVoices();
+    const preferred = ['Samantha', 'Karen', 'Google US English', 'Microsoft Aria', 'Microsoft Jenny', 'Victoria', 'Allison'];
+    for (const name of preferred) {
+      const v = voices.find(v => v.name.includes(name));
+      if (v) return v;
+    }
+    return voices.find(v => v.lang.startsWith('en')) || voices[0];
+  }
+
+  function startSpeaking() {
+    if (!window.speechSynthesis) {
+      alert("Sorry — your browser doesn't support speech. The full version uses a recorded voice.");
+      return;
+    }
+    const u = new SpeechSynthesisUtterance(speechText);
+    u.rate = 1.02;
+    u.pitch = 1.12;
+    const voice = pickVoice();
+    if (voice) u.voice = voice;
+
+    u.onstart = () => {
+      isSpeaking = true;
+      botSvg.classList.add('speaking');
+      voiceBtn.classList.add('playing');
+      voiceBtnLabel.textContent = 'Stop';
+      subtitleText.textContent = speechText;
+      subtitleBar.classList.add('visible');
+    };
+    u.onend = u.onerror = () => {
+      isSpeaking = false;
+      botSvg.classList.remove('speaking');
+      voiceBtn.classList.remove('playing');
+      voiceBtnLabel.textContent = 'Press Play to Meet Mohi';
+      subtitleBar.classList.remove('visible');
+    };
+
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(u);
+  }
+
+  function stopSpeaking() {
+    window.speechSynthesis.cancel();
+    isSpeaking = false;
+    botSvg.classList.remove('speaking');
+    voiceBtn.classList.remove('playing');
+    voiceBtnLabel.textContent = 'Press Play to Meet Mohi';
+    subtitleBar.classList.remove('visible');
+  }
+
+  voiceBtn.addEventListener('click', () => {
+    if (isSpeaking) stopSpeaking();
+    else startSpeaking();
+  });
+
+  const chatBody = document.getElementById('chatBody');
+  const quickReplies = document.getElementById('quickReplies');
+  const chatInput = document.getElementById('chatInput');
+  const chatSend = document.getElementById('chatSend');
+
+  const responses = {
+    about: {
+      user: "Tell me about Mohi",
+      bot: "Mohi is a <strong>Platform / DevOps engineer</strong> with 5+ years across <strong>Fortune 50 State Farm</strong> (current) and <strong>SeatGeek</strong>. She runs 40+ workloads on 12+ Kubernetes clusters and holds <strong>CKS, CKA, CKAD, AWS SAA, and Terraform</strong> certs. NYC-based, US Permanent Resident — no visa sponsorship needed."
+    },
+    strengths: {
+      user: "What are her strengths?",
+      bot: "Soft side: <strong>adaptable, fast-learner, strategic, curious, and a strong communicator</strong>. Tech side: deep in <strong>Security, CI/CD, Kubernetes, and AWS</strong> — backed by CKS, CKA, CKAD, AWS SAA, and Terraform certs. Want a war story? Or type any tool name to see if she knows it 🔧"
+    },
+    hobbies: {
+      user: "What are her hobbies?",
+      bot: "Outside of work? Five years of <strong>karate &amp; taekwondo</strong> — the focus translates straight to incident response. She also plays football with friends, mentors junior DevOps engineers on the side, and builds production-grade Kubernetes labs in her free time (yes, K8s is a hobby for her too 😅)."
+    },
+    best: {
+      user: "Show me her best work",
+      bot: "Honestly? Too many to pick just one — keeping SeatGeek's ticketing alive through stadium-scale on-sales, eliminating container escape vulns at State Farm, dropping observability costs from $5K to under $500/mo. Each one has a story. <strong>Best way to hear them — connect on LinkedIn.</strong> 📩 Scroll down for the link!"
+    }
+  };
+
+  const techJokes = [
+    "Why don't containers ever get lonely? They always have a <strong>sidecar</strong>. 🐳",
+    "A bunch of Kubernetes pods walked into a bar. Half got <strong>evicted</strong> before they could order. 🍻",
+    "Why did the DevOps engineer break up with their pager? Too many <strong>on-calls</strong>. 📟💔",
+    "How many DevOps engineers does it take to change a lightbulb? None — it's a <strong>hardware problem</strong>. 💡",
+    "Why was the YAML file feeling sad? It had too many <strong>indentation issues</strong>. 😢",
+    "Why do K8s admins make terrible roommates? They keep <strong>killing your pods</strong>. 🪦",
+    "What's a DevOps engineer's favorite music? Heavy metal — they love working with <strong>bare metal</strong>. 🎸",
+    "What did the cluster say to the new node? <em>Welcome aboard — you're now part of my Kube-mily.</em> 👨‍👩‍👧‍👦"
+  ];
+  let lastJokeIdx = -1;
+  function pickJoke() {
+    let i;
+    do { i = Math.floor(Math.random() * techJokes.length); } while (i === lastJokeIdx && techJokes.length > 1);
+    lastJokeIdx = i;
+    return techJokes[i];
+  }
+
+  function addMsg(text, who) {
+    const div = document.createElement('div');
+    div.className = `msg ${who}`;
+    if (who === 'bot') div.innerHTML = `<span class="label">Mohi-AI</span>${text}`;
+    else div.textContent = text;
+    chatBody.appendChild(div);
+    chatBody.scrollTop = chatBody.scrollHeight;
+    return div;
+  }
+
+  function addTyping() {
+    const div = document.createElement('div');
+    div.className = 'msg bot';
+    div.innerHTML = '<div class="typing"><span></span><span></span><span></span></div>';
+    chatBody.appendChild(div);
+    chatBody.scrollTop = chatBody.scrollHeight;
+    return div;
+  }
+
+  async function botReply(text) {
+    const typing = addTyping();
+    await new Promise(r => setTimeout(r, 700 + Math.random() * 400));
+    typing.remove();
+    addMsg(text, 'bot');
+  }
+
+  const skillContext = {
+    'kubernetes': "Kubernetes is her bread and butter — CKS, CKA, and CKAD certified. She runs 12+ EKS clusters with 40+ workloads in production at State Farm.",
+    'k8s': "Yep — Kubernetes. CKS/CKA/CKAD certified, daily driver.",
+    'eks': "Yes — runs 12+ EKS clusters in production at State Farm.",
+    'docker': "Yes — daily. Migrated DinD to Sysbox to eliminate container escape vulnerabilities.",
+    'helm': "Yes — core to her GitOps platform alongside ArgoCD and Kustomize.",
+    'kustomize': "Yes — uses with ArgoCD for environment overlays.",
+    'karpenter': "Yes — replaced Cluster Autoscaler with Karpenter at SeatGeek for sub-60s spot provisioning.",
+    'istio': "Yes — replaced NGINX ingress with Istio mesh across her cluster fleet, with mTLS and topology-aware routing.",
+    'sysbox': "Yes — replaced privileged DinD with Sysbox to kill container escape vulnerabilities.",
+    'keda': "Yes — event-driven autoscaling on K8s.",
+    'velero': "Yes — K8s backup and disaster recovery.",
+    'cilium': "Yes — eBPF-based networking and policy on Kubernetes.",
+    'calico': "Yes — for K8s network policies.",
+    'rancher': "Yes — multi-cluster management at State Farm.",
+    'argocd': "Yes — built her GitOps platform on ArgoCD + Helm + Kustomize, automating 40+ microservices.",
+    'fluxcd': "Yes — used in her hands-on lab projects.",
+    'flux': "Yes (FluxCD) — used in her hands-on labs.",
+    'gitops': "Yes — built her org's standardized GitOps platform from scratch.",
+    'gitlab': "Yes — standardized AWS infra in GitLab CI at SeatGeek.",
+    'gitlab ci': "Yes — heavy use at SeatGeek for poly-repo Terraform pipelines.",
+    'github actions': "Yes — modernized legacy Jenkins pipelines to GitHub Actions deploying to EKS.",
+    'jenkins': "Yes — but she's migrated apps off Jenkins to modern CI.",
+    'ci/cd': "Yes — CI/CD is one of her core strengths.",
+    'aws': "Yes — AWS Solutions Architect Associate. Builds across EKS, Lambda, API Gateway, S3, RDS, ECS, MSK, and more.",
+    'lambda': "Yes — built serverless platforms with Lambda + API Gateway + DynamoDB handling millions of requests at SeatGeek.",
+    'api gateway': "Yes — designed multi-tenant API Gateway setups with Lambda authorizers and per-tenant rate limiting.",
+    's3': "Yes — daily.",
+    'dynamodb': "Yes — sharded DynamoDB at thousands of reads/sec for SeatGeek's queueing system.",
+    'rds': "Yes.",
+    'aurora': "Yes — Aurora Multi-AZ with connection pooling for SeatGeek's ticketing platform.",
+    'elasticache': "Yes — used for sub-millisecond seat locks on SeatGeek's ticketing.",
+    'sqs': "Yes — buffered checkout traffic at SeatGeek across multi-AZ.",
+    'sns': "Yes.",
+    'msk': "Yes — Kafka on AWS for SeatGeek's order streaming.",
+    'kinesis': "Yes.",
+    'cloudfront': "Yes — used with WAF for edge routing during traffic spikes.",
+    'route53': "Yes.",
+    'cognito': "Yes.",
+    'cloudformation': "Yes — though she prefers Terraform.",
+    'cloudwatch': "Yes.",
+    'cloudtrail': "Yes — for audit and security pipelines.",
+    'iam': "Yes — daily, especially OIDC federation for CI/CD.",
+    'kms': "Yes.",
+    'guardduty': "Yes.",
+    'security hub': "Yes.",
+    'fargate': "Yes.",
+    'batch': "Yes — built an in-house load testing platform on AWS Batch + Spot + Fargate.",
+    'azure': "Yes — multi-cloud experience (used Azure Secrets Manager with External Secrets Operator).",
+    'gcp': "Yes — some exposure.",
+    'ecs': "Yes.",
+    'terraform': "Yes — Terraform Associate certified. Standardized AWS provisioning across 25+ microservices.",
+    'terragrunt': "Yes — used in her multi-account / multi-environment hands-on lab.",
+    'ansible': "Yes.",
+    'packer': "Yes — built custom AMIs to cut EC2 provisioning from 4-5 min to under 2 min.",
+    'postgresql': "Yes.",
+    'postgres': "Yes (PostgreSQL).",
+    'mysql': "Yes.",
+    'redis': "Yes — sub-millisecond seat locks at SeatGeek.",
+    'kafka': "Yes — order streaming via MSK at SeatGeek.",
+    'flink': "Yes — streaming pipelines at SeatGeek.",
+    'mongodb': "Yes.",
+    'documentdb': "Yes — used in her hands-on lab.",
+    'snowflake': "Yes — data warehouse work at SeatGeek.",
+    'vault': "Yes — replaced static secrets with Vault dynamic credentials at SeatGeek.",
+    'cert-manager': "Yes.",
+    'external secrets operator': "Yes — paired Vault with AWS/Azure Secrets Manager via ESO.",
+    'eso': "Yes (External Secrets Operator).",
+    'rbac': "Yes — daily on K8s.",
+    'mtls': "Yes — implemented service-to-service mTLS via Istio.",
+    'trivy': "Yes — image scanning in CI gates as part of her zero-trust pipeline.",
+    'grype': "Yes.",
+    'kubescape': "Yes.",
+    'kubelinter': "Yes.",
+    'kube-bench': "Yes.",
+    'opa': "Yes — OPA Gatekeeper at admission for policy enforcement.",
+    'gatekeeper': "Yes (OPA Gatekeeper).",
+    'syft': "Yes.",
+    'falco': "Yes — runtime detection layer in her zero-trust K8s setup.",
+    'gvisor': "Yes — sandboxing alongside Sysbox.",
+    'prometheus': "Yes — replaced Splunk + Datadog with the Prometheus stack, dropping costs from $5K/mo to under $500.",
+    'grafana': "Yes — standardized dashboards org-wide.",
+    'datadog': "Yes — used at State Farm before migrating to Prometheus.",
+    'loki': "Yes — log aggregation paired with Grafana.",
+    'thanos': "Yes — long-term Prometheus retention via S3.",
+    'fluent bit': "Yes — log collection in K8s.",
+    'fluentd': "Yes.",
+    'fluentbit': "Yes (Fluent Bit) — log collection in K8s.",
+    'elasticsearch': "Yes.",
+    'kibana': "Yes (EFK stack).",
+    'splunk': "Yes — used at State Farm before migrating to Prometheus + Grafana + Loki.",
+    'slo': "Yes — defines and tracks SLOs.",
+    'sli': "Yes — paired with SLOs.",
+    'incident response': "Yes — led incident response during stadium-scale on-sales at SeatGeek.",
+    'python': "Yes — automation, scripting, and tooling.",
+    'go': "Yes — used Go for service teams at SeatGeek.",
+    'golang': "Yes (Go).",
+    'bash': "Yes — daily.",
+    'hcl': "Yes — Terraform daily.",
+    'linux': "Yes — primary OS for everything she does.",
+    'ubuntu': "Yes.",
+    'centos': "Yes.",
+    'envoy': "Yes — Istio data plane uses Envoy.",
+    'alb': "Yes — AWS Application Load Balancer.",
+    'nlb': "Yes — Network Load Balancer.",
+    'claude': "Yes — uses Claude in her daily workflow.",
+    'chatgpt': "Yes.",
+    'copilot': "Yes — GitHub Copilot daily.",
+    'cursor': "Yes — uses Cursor IDE.",
+    'mcp': "Yes — works with MCP (Model Context Protocol) for agentic workflows.",
+    'llm': "Yes — works with LLMs in her workflow and hands-on AI projects.",
+    'ml': "Yes — applies ML / LLMs in her platform engineering work.",
+    'microservices': "Yes — operates 40+ microservices at State Farm.",
+    'system design': "Yes — designs distributed systems daily.",
+    'sre': "Yes — SRE work is core to her role.",
+    'devops': "Yes — that's literally her job title.",
+    'platform engineering': "Yes — Platform Engineer is her current role."
+  };
+
+  const skillName = {
+    'k8s':'Kubernetes', 'aws':'AWS', 'gcp':'GCP', 'iam':'IAM', 'kms':'KMS',
+    's3':'S3', 'sqs':'SQS', 'sns':'SNS', 'msk':'MSK', 'ecs':'ECS', 'eks':'EKS',
+    'rds':'RDS', 'rbac':'RBAC', 'opa':'OPA', 'mtls':'mTLS', 'eso':'External Secrets Operator',
+    'alb':'ALB', 'nlb':'NLB', 'slo':'SLO', 'sli':'SLI', 'hcl':'HCL',
+    'mcp':'MCP', 'llm':'LLM', 'ml':'ML', 'sre':'SRE',
+    'argocd':'ArgoCD', 'fluxcd':'FluxCD', 'flux':'FluxCD', 'keda':'KEDA',
+    'gitlab':'GitLab', 'gitlab ci':'GitLab CI', 'github actions':'GitHub Actions',
+    'gvisor':'gVisor', 'documentdb':'DocumentDB', 'mongodb':'MongoDB',
+    'mysql':'MySQL', 'postgresql':'PostgreSQL', 'postgres':'PostgreSQL',
+    'dynamodb':'DynamoDB', 'cloudfront':'CloudFront', 'cloudformation':'CloudFormation',
+    'cloudtrail':'CloudTrail', 'cloudwatch':'CloudWatch', 'guardduty':'GuardDuty',
+    'fluent bit':'Fluent Bit', 'fluentbit':'Fluent Bit', 'fluentd':'FluentD',
+    'elasticsearch':'Elasticsearch', 'chatgpt':'ChatGPT',
+    'kubescape':'Kubescape', 'kubelinter':'KubeLinter', 'kube-bench':'kube-bench',
+    'cert-manager':'cert-manager', 'api gateway':'API Gateway', 'security hub':'Security Hub',
+    'kibana':'Kibana', 'kafka':'Kafka', 'flink':'Flink', 'gitops':'GitOps',
+    'ci/cd':'CI/CD', 'platform engineering':'Platform Engineering',
+    'system design':'System Design', 'incident response':'Incident Response'
+  };
+
+  function getSkillName(key) {
+    return skillName[key] || key.charAt(0).toUpperCase() + key.slice(1);
+  }
+
+  function checkSkill(text) {
+    const lower = text.toLowerCase().replace(/[?!.,'"]/g, '');
+    const keys = Object.keys(skillContext).sort((a, b) => b.length - a.length);
+    for (const key of keys) {
+      let matched = false;
+      if (key.includes(' ') || key.includes('-') || key.includes('/')) {
+        matched = lower.includes(key);
+      } else {
+        const escaped = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        matched = new RegExp(`\\b${escaped}\\b`, 'i').test(lower);
+      }
+      if (matched) {
+        return `<strong>Yes — ${getSkillName(key)}.</strong> ${skillContext[key]}`;
+      }
+    }
+    return null;
+  }
+
+  function bindQuickReplies() {
+    quickReplies.querySelectorAll('.quick-reply').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const key = btn.dataset.q;
+        if (key === 'joke') {
+          addMsg("Tell me a joke", 'user');
+          await botReply(pickJoke());
+          return;
+        }
+        const r = responses[key];
+        if (!r) return;
+        addMsg(r.user, 'user');
+        await botReply(r.bot);
+      });
+    });
+  }
+
+  function handleFreeText(text) {
+    const lower = text.toLowerCase();
+    if (lower.includes('joke') || lower.includes('funny') || lower.includes('laugh')) return botReply(pickJoke());
+    if (lower.includes('hobby') || lower.includes('hobbies') || lower.match(/\boutside of work\b/) || lower.match(/\bfor fun\b/)) return botReply(responses.hobbies.bot);
+    if (lower.includes('strength') || lower.includes('good at') || lower.match(/\bstrong at\b/)) return botReply(responses.strengths.bot);
+    if (lower.match(/\b(about|who is|who's) mohi\b/) || lower.match(/^who\b/) || lower.match(/^about\b/)) return botReply(responses.about.bot);
+    if (lower.includes('best work') || lower.includes('biggest project') || lower.includes('proudest')) return botReply(responses.best.bot);
+
+    const skillMatch = checkSkill(text);
+    if (skillMatch) return botReply(skillMatch);
+
+    if (lower.includes('contact') || lower.includes('reach') || lower.includes('hire') || lower.includes('linkedin') || lower.includes('connect')) {
+      return botReply("Best way: connect with her on LinkedIn — <strong>linkedin.com/in/r-mokhi</strong>. Scroll down for the link!");
+    }
+    if (lower.match(/\b(hi|hello|hey|sup|yo)\b/)) {
+      return botReply("Hey 👋 What can I help with? Try asking about her strengths, hobbies, best work — or type any tool name (Kubernetes, Lambda, Splunk…) and I'll tell you if she knows it.");
+    }
+    return botReply("Hmm — I didn't catch a match. Try a quick reply below 👇 or type a specific tool name (like 'AWS' or 'ArgoCD') to see if Mohi knows it.");
+  }
+
+  chatSend.addEventListener('click', () => {
+    const text = chatInput.value.trim();
+    if (!text) return;
+    addMsg(text, 'user');
+    chatInput.value = '';
+    handleFreeText(text);
+  });
+  chatInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') chatSend.click();
+  });
+
+  bindQuickReplies();
+</script>
+
+</body>
+</html>
